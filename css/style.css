@@ -199,7 +199,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 @media (min-width: 901px) { .about-media { position: sticky; top: 6.5rem; } }
 .about-photo { width: 100%; height: auto; }
 .about-cube { position: absolute; z-index: 3; left: -7%; top: -7%; width: 24%; animation: slowspin 26s linear infinite; }
-.about-guitar { position: absolute; z-index: -1; right: -16%; top: -10%; width: 38%; rotate: 9deg;  animation: slowspin 26s linear infinite; }
+.about-guitar { position: absolute; z-index: -1; right: -16%; top: -7%; width: 24%; rotate: 9deg;  animation: slowspin 26s linear infinite; }
 @keyframes slowspin { to { transform: rotate(360deg); } }
 
 .tag-ribbon { position: relative; z-index: 2; margin: -1.5rem 0 0 -5%; width: 110%; background: var(--blue); color: var(--cream); rotate: -2deg; border-radius: 6px; overflow: hidden; box-shadow: 0 12px 30px rgba(26, 61, 170, .28); }

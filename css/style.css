@@ -200,7 +200,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 .about-photo { width: 100%; height: auto; }
 .about-cube { position: absolute; z-index: 3; left: -7%; top: -7%; width: 24%; animation: slowspin 26s linear infinite; }
 @keyframes slowspin { to { transform: rotate(360deg); } }
-.about-guitar { position: absolute; z-index: -1; right: -16%; bottom: 50%; width: 38%; rotate: 9deg; }
+.about-guitar { position: absolute; z-index: -1; right: -16%; bottom: -50%; width: 38%; rotate: 9deg; }
 .tag-ribbon { position: relative; z-index: 2; margin: -1.5rem 0 0 -5%; width: 110%; background: var(--blue); color: var(--cream); rotate: -2deg; border-radius: 6px; overflow: hidden; box-shadow: 0 12px 30px rgba(26, 61, 170, .28); }
 .ribbon-track { display: flex; align-items: center; width: max-content; white-space: nowrap; padding: .72rem 0; font-size: .88rem; font-weight: 600; letter-spacing: .03em; }
 .ribbon-track span { padding: 0 .3rem; }

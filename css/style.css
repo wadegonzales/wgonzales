@@ -260,7 +260,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 .tools-used { display: flex; align-items: center; gap: 1.1rem; }
 .tools-label { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--cream); opacity: .85; }
 .tool-badges { display: flex; gap: .6rem; }
-.tool-badge { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 13px; background: var(--cream); color: var(--blue); font-size: .85rem; font-weight: 700; box-shadow: 0 6px 16px rgba(0, 0, 0, .18); transition: transform .3s var(--ease-out); }
+.tool-badge { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: var(--cream); color: var(--blue); font-size: .85rem; font-weight: 700; box-shadow: 0 6px 16px rgba(0, 0, 0, .18); transition: transform .3s var(--ease-out); }
 .tool-badge:hover { transform: translateY(-4px) rotate(-5deg); }
 .tool-badge svg { width: 21px; height: 21px; fill: var(--blue); }
 

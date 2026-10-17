@@ -217,7 +217,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 
 .software-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem 1.1rem; margin-top: .6rem; }
 .soft-badge { display: flex; flex-direction: column; align-items: center; gap: .5rem; text-align: center; }
-.badge-icon { width: 54px; height: 54px; display: grid; place-items: center; background:  var(--cream-soft); border: 0px solid var(--blue); border-radius: 15px; font-weight: 700; font-size: .95rem; transition: transform .3s var(--ease-out), background .3s, color .3s; }
+.badge-icon { width: 54px; height: 54px; display: grid; place-items: center; background:  var(--cream-soft); border: 0px solid var(--blue); border-radius: 16px; font-weight: 700; font-size: .95rem; transition: transform .3s var(--ease-out), background .3s, color .3s; }
 .badge-icon svg { width: 22px; height: 22px; fill: currentColor; }
 .soft-badge:hover .badge-icon { transform: translateY(-5px) rotate(-4deg);  color: var(--cream); }
 .badge-name { font-size: .68rem; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; opacity: .75; }

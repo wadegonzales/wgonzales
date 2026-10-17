@@ -9,7 +9,10 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Wade Gonzales — Portfolio 2026">
 <meta property="og:description" content="Graphic design, event branding, UI/UX and video editing by Harvey Wade Gonzales.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%231a3daa'/%3E%3Cpath d='M18 62 Q 30 48 42 62 T 66 62 T 90 62' stroke='%23fff1be' stroke-width='7' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/logo-wg.webp" as="image">
 <link rel="preload" href="assets/fonts/instrument-serif-latin-400-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>
@@ -33,7 +36,7 @@
 <!-- ============ PRELOADER: a wave rises, then the curtain lifts ============ -->
 <div class="preloader" id="preloader" aria-hidden="true">
   <svg class="preloader-wave" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,16 C8,8 17,8 25,16 S42,24 50,16 S67,8 75,16 S92,24 100,16 V100 H0 Z"/></svg>
-  <span class="preloader-mark">WG</span>
+  <img class="preloader-mark" src="assets/logo-wg.webp" alt="" width="512" height="512" fetchpriority="high" decoding="async">
 </div>
 
 <div class="drip" id="drip" aria-hidden="true"></div>
@@ -43,7 +46,7 @@
 <header class="site-header" id="siteHeader">
   <div class="header-inner">
     <a href="#top" class="logo" aria-label="Wade Gonzales — back to top">
-      <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M4 24 Q 10 14 16 24 T 28 24 T 40 24"/></svg></span>
+      <img class="logo-mark" src="assets/logo-wg.webp" alt="" width="512" height="512" decoding="async">
       <span class="logo-word">Wade<em>Gonzales</em></span>
     </a>
 
@@ -77,7 +80,7 @@
   <section class="hero" id="home">
     <img src="assets/hero-wave.webp" width="1600" height="1600" decoding="async" alt="A great wave breaking, drawn in blue halftone in the style of Hokusai" class="hero-art" fetchpriority="high">
     <img src="assets/cube-accent.webp" width="505" height="520" decoding="async" alt="" class="hero-cube" aria-hidden="true">
-    <!-- <img src="assets/guitar-accent.webp" width="444" height="720" decoding="async" alt="" class="hero-guitar" aria-hidden="true"> -->
+    <img src="assets/guitar-accent.webp" width="444" height="720" decoding="async" alt="" class="hero-guitar" aria-hidden="true">
 
     <div class="hero-inner">
       <p class="hero-eyebrow">by <b>Wade Gonzales</b><svg class="sparkle" aria-hidden="true"><use href="#i-spark"/></svg></p>
@@ -87,10 +90,12 @@
         <span class="hero-tag-div"></span>
         <span>2026</span>
       </div>
+      <a href="#about" class="scroll-cue" aria-label="Scroll to About Me">
+        <span>Scroll</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m0 0l-6-6m6 6l6-6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
-
   </section>
-        <div class="marquee" aria-hidden="true"><div class="marquee-track" data-marquee="services"></div></div>
 
   <!-- ============ ABOUT ME ============ -->
   <section class="about" id="about">
@@ -121,14 +126,14 @@
           <h2 class="section-heading">Softwares <svg class="sparkle" aria-hidden="true"><use href="#i-spark"/></svg></h2>
           <!-- Skill levels are editable: change the --fill value on each .soft-badge -->
           <div class="software-grid">
-            <div class="soft-badge" style="--fill:90%"><span class="badge-icon"><img src="assets/ca.png"></span><span class="badge-name">Canva</span><span class="badge-bar"><i></i></span></div>
-            <div class="soft-badge" style="--fill:70%"><span class="badge-icon"><img src="assets/in.png"></span><span class="badge-name">Inkscape</span><span class="badge-bar"><i></i></span></div>
-            <div class="soft-badge" style="--fill:85%"><span class="badge-icon"><img src="assets/cc.png"></span><span class="badge-name">CapCut</span><span class="badge-bar"><i></i></span></div>
-            <div class="soft-badge" style="--fill:95%"><span class="badge-icon"><img src="assets/fi.png"></span><span class="badge-name">Figma</span><span class="badge-bar"><i></i></span></div>
-            <div class="soft-badge" style="--fill:95%"><span class="badge-icon"><img src="assets/ps.png"></span><span class="badge-name">Photoshop</span><span class="badge-bar"><i></i></span></div>
-            <div class="soft-badge" style="--fill:85%"><span class="badge-icon"><img src="assets/ai.png"></span><span class="badge-name">Illustrator</span><span class="badge-bar"><i></i></span></div>
-            <div class="soft-badge" style="--fill:80%"><span class="badge-icon"><img src="assets/pr.png"></span><span class="badge-name">Premiere Pro</span><span class="badge-bar"><i></i></span></div>
-            <div class="soft-badge" style="--fill:75%"><span class="badge-icon"><img src="assets/ae.png"></span><span class="badge-name">After Effects</span><span class="badge-bar"><i></i></span></div>
+            <div class="soft-badge" style="--fill:90%"><span class="badge-icon">C</span><span class="badge-name">Canva</span><span class="badge-bar"><i></i></span></div>
+            <div class="soft-badge" style="--fill:70%"><span class="badge-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C9 7 5 11.5 5 15.5A7 7 0 0019 15.5C19 11.5 15 7 12 2z"/></svg></span><span class="badge-name">Inkscape</span><span class="badge-bar"><i></i></span></div>
+            <div class="soft-badge" style="--fill:85%"><span class="badge-icon">CC</span><span class="badge-name">CapCut</span><span class="badge-bar"><i></i></span></div>
+            <div class="soft-badge" style="--fill:95%"><span class="badge-icon">Fig</span><span class="badge-name">Figma</span><span class="badge-bar"><i></i></span></div>
+            <div class="soft-badge" style="--fill:95%"><span class="badge-icon">Ps</span><span class="badge-name">Photoshop</span><span class="badge-bar"><i></i></span></div>
+            <div class="soft-badge" style="--fill:85%"><span class="badge-icon">Ai</span><span class="badge-name">Illustrator</span><span class="badge-bar"><i></i></span></div>
+            <div class="soft-badge" style="--fill:80%"><span class="badge-icon">Pr</span><span class="badge-name">Premiere Pro</span><span class="badge-bar"><i></i></span></div>
+            <div class="soft-badge" style="--fill:75%"><span class="badge-icon">Ae</span><span class="badge-name">After Effects</span><span class="badge-bar"><i></i></span></div>
           </div>
         </div>
 
@@ -186,9 +191,9 @@
       <div class="tools-used reveal-up">
         <span class="tools-label">Tools Used</span>
         <ul class="tool-badges" aria-label="Tools used">
-          <li class="tool-badge" title="Canva"><img src="assets/ca.png"></li>
-          <li class="tool-badge" title="Inkscape"><img src="assets/in.png"></li>
-          <li class="tool-badge" title="Photoshop"><img src="assets/ps.png"></li>
+          <li class="tool-badge" title="Canva">C</li>
+          <li class="tool-badge" title="Inkscape"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C9 7 5 11.5 5 15.5A7 7 0 0019 15.5C19 11.5 15 7 12 2z"/></svg></li>
+          <li class="tool-badge" title="Photoshop">Ps</li>
         </ul>
       </div>
     </div>
@@ -383,7 +388,7 @@
   <div class="wave-divider" aria-hidden="true"><svg viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 Q75,60 150,30 T300,30 T450,30 T600,30 T750,30 T900,30 T1050,30 T1200,30 V0 H0 Z"/></svg></div>
   <div class="container footer-inner">
     <div class="footer-brand">
-      <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M4 24 Q 10 14 16 24 T 28 24 T 40 24"/></svg></span>
+      <img class="logo-mark" src="assets/logo-wg.webp" alt="" width="512" height="512" loading="lazy" decoding="async">
       <p>Wade Gonzales<span>Graphic &amp; UI/UX Designer — Philippines</span></p>
     </div>
 

@@ -156,9 +156,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 .hero-guitar { position: absolute; z-index: 2; right: 4%; bottom: -3%; width: min(17vw, 15.625rem); rotate: -62deg; pointer-events: none; user-select: none;
   translate: 0 calc(var(--scroll, 0) * .08px); }
 .hero-inner { position: relative; z-index: 3; margin-left: auto; width: min(35rem, 46vw); padding-right: var(--gutter); }
-.hero-eyebrow { display: flex; align-items: center; gap: .45rem; margin-bottom: .5rem; font-family: var(--font-display); font-style: italic; font-size: 1.25rem; }
+.hero-eyebrow { display: flex; align-items: center; gap: .45rem; font-family: var(--font-display); font-style: italic; font-size: 1.25rem; }
 .hero-eyebrow b { font-family: var(--font-body); font-style: normal; font-weight: 700; font-size: .95rem; letter-spacing: .01em; }
-.hero-title { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(4rem, 9vw, 8rem); line-height: .92; margin-bottom: 1.5rem; }
+.hero-title { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(4rem, 9vw, 8rem); line-height: .92; }
 .hero-tag { display: flex; width: fit-content; align-items: center; gap: .95rem; padding: .75rem 1.6rem; background: var(--blue); color: var(--cream); border-radius: 999px; font-size: .85rem; font-weight: 600; letter-spacing: .03em; }
 .hero-tag em { font-family: var(--font-display); font-size: 1.1em; }
 .hero-tag-div { width: 1px; height: 1.1em; background: rgba(255, 241, 190, .4); }

@@ -3,10 +3,17 @@
    A duotone blueprint-and-woodblock system: cobalt blue + parchment cream,
    swash italic display type, halftone photography, dashed grid dividers.
    ========================================================================== */
-
-@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap;
+@font-face { font-family: 'Averia Serif Libre'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('../assets/fonts/averia-serif-libre-latin-400-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Averia Serif Libre'; font-style: normal; font-weight: 700; font-display: swap;
+  src: url('../assets/fonts/averia-serif-libre-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Averia Serif Libre'; font-style: italic; font-weight: 700; font-display: swap;
+  src: url('../assets/fonts/averia-serif-libre-latin-400-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Averia Serif Libre'; font-style: italic; font-weight: 700; font-display: swap;
+  src: url('../assets/fonts/averia-serif-libre-latin-700-italic.woff2') format('woff2'); }
+@font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 700; font-display: swap;
   src: url('../assets/fonts/instrument-serif-latin-400-normal.woff2') format('woff2'); }
-@font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap;
+@font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 700; font-display: swap;
   src: url('../assets/fonts/instrument-serif-latin-400-italic.woff2') format('woff2'); }
 @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap;
   src: url('../assets/fonts/inter-latin-wght-normal.woff2') format('woff2'); }
@@ -18,8 +25,7 @@
   --blue-line: rgba(26, 61, 170, 0.3);
   --cream: #fff1be;
   --cream-soft: #fff8de;
-
-  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-display: 'Averia Serif Libre', Georgia, 'Times New Roman', serif;
   --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --container-w: 77.5rem;
@@ -67,7 +73,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 .case-title .sparkle { vertical-align: .55em; }
 @keyframes twinkle { 0%, 100% { opacity: .55; transform: scale(.85) rotate(0); } 50% { opacity: 1; transform: scale(1.15) rotate(15deg); } }
 
-.section-heading { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(1.8rem, 3.2vw, 2.5rem); line-height: 1.1; margin-bottom: .55em; }
+.section-heading { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: clamp(1.8rem, 3.2vw, 2.5rem); line-height: 1.1; margin-bottom: .55em; }
 
 /* ---------- scroll reveal (only active when JS confirms it can reveal again) ---------- */
 .reveal-ready .reveal-up { opacity: 0; translate: 0 1.75rem; transition: opacity .9s var(--ease-out), translate .9s var(--ease-out); }
@@ -108,8 +114,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 .logo { display: flex; align-items: center; gap: .6rem; }
 .logo-mark { width: 2.5rem; height: 2.5rem; border-radius: 0.6875rem; flex-shrink: 0; object-fit: cover; transition: transform .5s var(--ease-out); }
 .logo:hover .logo-mark { transform: rotate(-6deg) scale(1.08); }
-.logo-word { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; white-space: nowrap; }
-.logo-word em { opacity: .55; margin-left: .2em; }
+.logo-word { font-family: var(--font-display); font-style: italic; font-weight: 700; /* …rest unchanged */ }
+.logo-word em { font-weight: 400; opacity: .55; margin-left: .2em; }
 
 .main-nav { display: flex; align-items: center; gap: clamp(1rem, 2.4vw, 2rem); }
 .main-nav a { position: relative; padding: .35rem .1rem; font-size: .76rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
@@ -158,7 +164,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 .hero-inner { position: relative; z-index: 3; margin-left: auto; width: min(35rem, 46vw); padding-right: var(--gutter); }
 .hero-eyebrow { display: flex; align-items: center; gap: .45rem; font-family: var(--font-display); font-style: italic; font-size: 1.25rem; }
 .hero-eyebrow b { font-family: var(--font-body); font-style: normal; font-weight: 700; font-size: .95rem; letter-spacing: .01em; }
-.hero-title { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(4rem, 9vw, 8rem); line-height: .92; }
+.hero-title { font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: clamp(4rem, 9vw, 8rem); line-height: .92; }
 .hero-tag { display: flex; width: fit-content; align-items: center; gap: .95rem; padding: .75rem 1.6rem; background: var(--blue); color: var(--cream); border-radius: 999px; font-size: .85rem; font-weight: 600; letter-spacing: .03em; }
 .hero-tag em { font-family: var(--font-display); font-size: 1.1em; }
 .hero-tag-div { width: 1px; height: 1.1em; background: rgba(255, 241, 190, .4); }
@@ -256,7 +262,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 .section-divider-block { position: relative; overflow: hidden; background: var(--blue); padding: clamp(6rem, 12vw, 9rem) 0 clamp(3.5rem, 7vw, 5rem); }
 .divider-grid { position: absolute; inset: 0; z-index: 0; pointer-events: none; background-image: var(--dash-grid); background-size: 8.75rem 8.75rem; }
 .divider-inner { position: relative; z-index: 2; max-width: var(--container-w); margin: 0 auto; padding: 0 var(--gutter); }
-.divider-title {  font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(3rem, 8vw, 6rem); line-height: 1; color: var(--cream); }
+.divider-title {  font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: clamp(3rem, 8vw, 6rem); line-height: 1; color: var(--cream); }
 .tools-used { display: flex; align-items: center; gap: 1.1rem; }
 .tools-label { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--cream); opacity: .85; }
 .tool-badges { display: flex; gap: .6rem; }
@@ -283,7 +289,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 .case-study:last-child { padding-bottom: 0; }
 .case-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: clamp(1.2rem, 4vw, 3rem); align-items: start; margin-bottom: clamp(2rem, 5vw, 3.2rem); }
 .case-num { font-family: var(--font-display); font-style: italic; font-size: clamp(4rem, 9vw, 6.5rem); line-height: .8; color: transparent; -webkit-text-stroke: 1.5px var(--blue); }
-.case-title { margin-bottom: .7rem; font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.05; }
+.case-title { margin-bottom: .7rem; font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.05; }
 .case-desc { max-width: 58em; font-size: 1.02rem; line-height: 1.7; opacity: .9; }
 .case-desc em { font-family: var(--font-display); font-size: 1.1em; }
 
@@ -309,7 +315,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 
 /* Video editing slots */
 .video-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.8rem; }
-.video-card h3 { margin-top: .9rem; font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 1.6rem; line-height: 1.1; }
+.video-card h3 { margin-top: .9rem; font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: 1.6rem; line-height: 1.1; }
 .video-card p { font-size: .82rem; opacity: .65; }
 .video-frame { position: relative; display: grid; place-items: center; aspect-ratio: 16 / 9; overflow: hidden; background: var(--cream-soft); border: 1.5px dashed var(--blue-line); border-radius: var(--radius-md); transition: border-color .3s, background .3s; }
 .video-frame:hover { border-color: var(--blue); background: var(--blue-soft); }
@@ -324,7 +330,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
    ========================================================================== */
 .testimonials { position: relative; padding: clamp(4.5rem, 9vw, 7rem) 0 clamp(5.5rem, 9vw, 7.5rem); background-image: var(--wave-pattern); background-size: 7.5rem 3.75rem; }
 .testi-eyebrow { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; opacity: .75; }
-.testi-title { margin-bottom: clamp(2.5rem, 6vw, 3.5rem); font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(3rem, 7vw, 5rem); line-height: 1; }
+.testi-title { margin-bottom: clamp(2.5rem, 6vw, 3.5rem); font-family: var(--font-display); font-style: italic; font-weight: 700; font-size: clamp(3rem, 7vw, 5rem); line-height: 1; }
 .testi-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4rem 1.6rem; align-items: start; padding-top: 2.6rem; }
 .testi-card { position: relative; display: flex; flex-direction: column; align-items: center; gap: .85rem; padding: 0 1.8rem 2.5rem; text-align: center; color: var(--cream); background: var(--blue); border-radius: var(--radius-lg); transition: transform .25s var(--ease-out); will-change: transform; }
 .testi-card:nth-child(2) { margin-top: 3rem; }
@@ -353,7 +359,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px d
 .footer-link:hover { background: rgba(255, 241, 190, .12); transform: translateY(-0.1875rem); }
 .footer-link svg { width: 1.125rem; height: 1.125rem; flex-shrink: 0; fill: var(--cream); }
 .footer-link span { display: flex; flex-direction: column; font-size: .78rem; font-weight: 600; line-height: 1.25; }
-.footer-link em { font-style: normal; font-weight: 400; font-size: .72rem; opacity: .68; }
+.footer-link em { font-style: normal; font-weight: 700; font-size: .72rem; opacity: .68; }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.6rem; }
 .footer-bottom p { font-size: .78rem; opacity: .6; }
 .to-top { width: 2.625rem; height: 2.625rem; flex-shrink: 0; display: grid; place-items: center; border: 1px solid rgba(255, 241, 190, .35); border-radius: 50%; transition: background .3s, transform .3s var(--ease-out); }

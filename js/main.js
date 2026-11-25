@@ -20,30 +20,42 @@
 
   /* Without IntersectionObserver there is nothing to trigger reveals — show everything. */
   if (!hasIO) doc.classList.remove('reveal-ready');
+  /* ---------------- Envelope intro (replaces the old preloader) ---------------- */
+  safe('envelope-intro', function () {
+    var PLAY_ONCE_PER_SESSION = false;   // true = only show on the first visit of a browser session
+    var intro = document.getElementById('envelopeIntro');
+    if (!intro) { doc.classList.add('is-loaded'); return; }
+    var env = document.getElementById('env');
+    var seal = document.getElementById('envSeal');
+    var skip = document.getElementById('envSkip');
+    var opened = false, left = false;
 
-  /* ---------------- Preloader: wave rises, curtain lifts ---------------- */
-  safe('preloader', function () {
-    var pre = document.getElementById('preloader');
-    if (!pre) { doc.classList.add('is-loaded'); return; }
-    var done = false;
-    body.classList.add('lock');
-
-    function hide() {
-      if (done) return;
-      done = true;
-      doc.classList.add('is-loaded');
-      pre.classList.add('hide');
+    function leave() {
+      if (left) return;
+      left = true;
+      doc.classList.add('is-loaded');                // starts the hero entrance animations
+      intro.classList.add('leaving');
       body.classList.remove('lock');
-      setTimeout(function () { pre.style.display = 'none'; }, 1000);
+      try { sessionStorage.setItem('envelopeSeen', '1'); } catch (e) {}
+      setTimeout(function () { intro.style.display = 'none'; }, 900);
     }
-    var minShow = reduceMotion ? 150 : 1900;
-    function afterLoad() {
-      var elapsed = window.performance && performance.now ? performance.now() : minShow;
-      setTimeout(hide, Math.max(0, minShow - elapsed));
+    function open() {
+      if (opened || left) return;
+      opened = true;
+      env.classList.add('open');
+      setTimeout(leave, 2000);                       // letter has risen -> lift the curtain
     }
-    if (document.readyState === 'complete') afterLoad();
-    else window.addEventListener('load', afterLoad);
-    setTimeout(hide, 5000); // never trap the page behind the loader
+
+    var seen = false;
+    try { seen = PLAY_ONCE_PER_SESSION && sessionStorage.getItem('envelopeSeen') === '1'; } catch (e) {}
+    if (reduceMotion || seen) { leave(); return; }
+
+    body.classList.add('lock');
+    seal.addEventListener('click', open);
+    skip.addEventListener('click', leave);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') leave(); });
+    setTimeout(open, 1900);                           // opens by itself; click the seal to open sooner
+    setTimeout(leave, 6500);                          // safety net
   });
 
   /* ---------------- Marquees (single source of truth for the lists) ---------------- */

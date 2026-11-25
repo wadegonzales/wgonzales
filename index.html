@@ -38,10 +38,25 @@
   <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 0c.7 6.8 5.2 11.3 12 12-6.8.7-11.3 5.2-12 12-.7-6.8-5.2-11.3-12-12C6.8 11.3 11.3 6.8 12 0z"/></symbol>
 </svg>
 
-<!-- ============ PRELOADER: a wave rises, then the curtain lifts ============ -->
-<div class="preloader" id="preloader" aria-hidden="true">
-  <svg class="preloader-wave" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,16 C8,8 17,8 25,16 S42,24 50,16 S67,8 75,16 S92,24 100,16 V100 H0 Z"/></svg>
-  <img class="preloader-mark" src="assets/logo-wg.webp" alt="" width="512" height="512" fetchpriority="high" decoding="async">
+<!-- ============ ENVELOPE INTRO (replaces the old #preloader block) ============ -->
+<div class="envelope-intro" id="envelopeIntro" role="dialog" aria-label="Welcome">
+  <div class="env" id="env">
+    <div class="env-back"></div>
+    <div class="env-letter">
+      <span class="env-letter-eyebrow">A letter from</span>
+      <strong>Wade Gonzales</strong>
+      <span class="env-letter-line"></span>
+      <em>Portfolio · 2026</em>
+    </div>
+    <div class="env-pocket env-pocket--l"></div>
+    <div class="env-pocket env-pocket--r"></div>
+    <div class="env-pocket env-pocket--b"></div>
+    <div class="env-flap"><i class="env-flap-out"></i><i class="env-flap-in"></i></div>
+    <button class="env-seal" id="envSeal" type="button" aria-label="Open the envelope">
+      <img src="assets/loki-seal.webp" alt="" width="640" height="467">
+    </button>
+  </div>
+  <button class="env-skip" id="envSkip" type="button">Skip intro</button>
 </div>
 
 <div class="drip" id="drip" aria-hidden="true"></div>

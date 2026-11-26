@@ -33,17 +33,19 @@
     function leave() {
       if (left) return;
       left = true;
-      doc.classList.add('is-loaded');                // starts the hero entrance animations
-      intro.classList.add('leaving');
+      doc.classList.add('is-loaded');
+      doc.classList.remove('env-on', 'env-open');
       body.classList.remove('lock');
+      intro.style.display = 'none';
       try { sessionStorage.setItem('envelopeSeen', '1'); } catch (e) {}
-      setTimeout(function () { intro.style.display = 'none'; }, 900);
     }
     function open() {
       if (opened || left) return;
       opened = true;
-      env.classList.add('open');
-      setTimeout(leave, 2000);                       // letter has risen -> lift the curtain
+      doc.classList.add('env-open');                 // the page rises inside the envelope
+      env.classList.add('open');                     // seal peels, flap lifts, paper slides away
+      setTimeout(function () { doc.classList.add('is-loaded'); }, 1000);   // hero entrance plays as the paper leaves
+      setTimeout(leave, 2500);
     }
 
     var seen = false;
@@ -51,13 +53,13 @@
     if (reduceMotion || seen) { leave(); return; }
 
     body.classList.add('lock');
+    doc.classList.add('env-on');
     seal.addEventListener('click', open);
     skip.addEventListener('click', leave);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') leave(); });
     setTimeout(open, 1900);                           // opens by itself; click the seal to open sooner
     setTimeout(leave, 6500);                          // safety net
   });
-
   /* ---------------- Marquees (single source of truth for the lists) ---------------- */
   safe('marquee', function () {
     var LISTS = {

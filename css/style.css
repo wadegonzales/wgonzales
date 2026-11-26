@@ -41,67 +41,43 @@
   /* blueprint dashed grid for the blue divider sections */
   --dash-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cline x1='0' y1='0' x2='0' y2='140' stroke='%23fff1be' stroke-opacity='0.22' stroke-width='1.6' stroke-dasharray='3 5'/%3E%3Cline x1='0' y1='0' x2='140' y2='0' stroke='%23fff1be' stroke-opacity='0.22' stroke-width='1.6' stroke-dasharray='3 5'/%3E%3C/svg%3E");
 }
-/* ===================== ENVELOPE INTRO ===================== */
+/* ===== ENVELOPE INTRO: a full-screen envelope, your page is the letter inside ===== */
 .envelope-intro {
-  position: fixed; inset: 0; z-index: 9999;
-  display: grid; place-items: center; overflow: hidden;
-  background-color: var(--blue, #1a3daa);
-  background-image: var(--dash-grid);
-  background-size: 8.75rem 8.75rem;
-  transition: transform .9s cubic-bezier(.76, 0, .24, 1), visibility 0s linear .9s;
-  animation: envFailsafe .9s cubic-bezier(.76, 0, .24, 1) 8s forwards;   /* if JS ever fails, the intro still leaves on its own */
+  position: fixed; inset: 0; z-index: 9999; overflow: hidden;
+  animation: envFailsafe .6s ease 8s forwards;   /* if JS ever fails, the intro still leaves on its own */
 }
-.envelope-intro.leaving { transform: translateY(-100%); visibility: hidden; pointer-events: none; }
-@keyframes envFailsafe { to { transform: translateY(-100%); visibility: hidden; } }
+@keyframes envFailsafe { to { opacity: 0; visibility: hidden; } }
+.env { position: absolute; inset: 0; }
+.env-pocket, .env-flap-shadow, .env-flap { position: absolute; inset: 0; }
 
-.env {
-  position: relative; width: min(88vw, 34rem); aspect-ratio: 1.55; perspective: 1400px;
-  opacity: 0; transform: translateY(2.5rem) scale(.96);
-  animation: envIn .9s cubic-bezier(.16, 1, .3, 1) .1s forwards;
-  filter: drop-shadow(0 1.6rem 1.4rem rgba(5, 14, 60, .45));
+/* the paper: three folded pockets + the top flap cover the whole screen */
+.env-pocket {
+  z-index: 3;
+  background-image: var(--wave-pattern); background-size: 7.5rem 3.75rem;
+  transition: transform 1s cubic-bezier(.76, 0, .24, 1) 1s;
 }
-@keyframes envIn { to { opacity: 1; transform: none; } }
-.env > * { position: absolute; }
+.env-pocket--l { background-color: #efd98f; clip-path: polygon(0 0, 52% 55%, 0 100%); }
+.env-pocket--r { background-color: #ead489; clip-path: polygon(100% 0, 48% 55%, 100% 100%); }
+.env-pocket--b { background-color: #f5e5a9; clip-path: polygon(0 100%, 50% 52%, 100% 100%); z-index: 4; }
+.env.open .env-pocket--l { transform: translateX(-104%); }
+.env.open .env-pocket--r { transform: translateX(104%); }
+.env.open .env-pocket--b { transform: translateY(104%); }
 
-/* paper */
-.env-back { inset: 0; background: #e3c978; }
-.env-letter {
-  left: 6%; right: 6%; top: 7%; bottom: 7%; z-index: 1;
-  display: grid; align-content: center; justify-items: center; gap: .4rem; text-align: center;
-  background: var(--cream-soft, #fff8de); color: var(--blue, #1a3daa);
-  border-radius: .3rem; box-shadow: 0 .2rem .8rem rgba(0, 0, 0, .18);
-  transition: transform 1s cubic-bezier(.65, 0, .35, 1) .85s;
-}
-.env-letter-eyebrow { font: 600 .62rem/1 var(--font-body, sans-serif); letter-spacing: .22em; text-transform: uppercase; opacity: .7; }
-.env-letter strong { font-family: var(--font-display, Georgia, serif); font-style: italic; font-weight: 700; font-size: clamp(1.4rem, 5.2vw, 2rem); line-height: 1.1; }
-.env-letter-line { width: 3rem; border-top: 1px dashed currentColor; opacity: .5; }
-.env-letter em { font-family: var(--font-display, Georgia, serif); font-size: .95rem; opacity: .85; }
-.env.open .env-letter { transform: translateY(-62%); }
-
-/* front pocket (three folded triangles) */
-.env-pocket { inset: 0; z-index: 3; }
-.env-pocket--l { background: #f1dd9b; clip-path: polygon(0 0, 52% 55%, 0 100%); }
-.env-pocket--r { background: #ecd791; clip-path: polygon(100% 0, 48% 55%, 100% 100%); }
-.env-pocket--b { background: #f8e8b0; clip-path: polygon(0 100%, 50% 52%, 100% 100%); z-index: 4; }
-
-/* top flap: two faces so you see the darker inside once it flips open */
-.env-flap { left: 0; right: 0; top: 0; height: 58%; z-index: 6; transform-origin: 50% 0; transform-style: preserve-3d; }
+/* top flap: two faces, so the darker inside shows as it flips up and away */
+.env-flap-shadow { z-index: 6; perspective: 1600px; filter: drop-shadow(0 .8rem 1rem rgba(70, 45, 0, .35)); pointer-events: none; }
+.env-flap { bottom: auto; height: 58%; transform-origin: 50% 0; transform-style: preserve-3d; }
 .env-flap i { position: absolute; inset: 0; clip-path: polygon(0 0, 100% 0, 50% 100%); backface-visibility: hidden; -webkit-backface-visibility: hidden; }
-.env-flap-out { background: linear-gradient(#f7e7ab, #f3e09b); }
+.env-flap-out { background-color: #f8e9b3; background-image: var(--wave-pattern); background-size: 7.5rem 3.75rem; }
 .env-flap-in { background: #d9bf67; transform: rotateX(180deg); }
-.env.open .env-flap { animation: flapOpen .9s cubic-bezier(.65, 0, .35, 1) .3s forwards; }
-@keyframes flapOpen {
-  0% { transform: rotateX(0); z-index: 6; }
-  49% { z-index: 6; }
-  50% { z-index: 0; }
-  100% { transform: rotateX(180deg); z-index: 0; }
-}
+.env.open .env-flap { animation: flapOpen 1s cubic-bezier(.65, 0, .35, 1) .3s forwards; }
+@keyframes flapOpen { to { transform: rotateX(180deg); } }
 
 /* the sticker seal: stamps down, waits (gentle pulse), then peels away */
 .env-seal {
-  left: 50%; top: 57%; width: 36%; z-index: 8; padding: 0; background: none; border: 0; cursor: pointer;
+  position: absolute; left: 50%; top: 57%; z-index: 8; width: clamp(11rem, 38vmin, 26rem);
+  padding: 0; background: none; border: 0; cursor: pointer;
   translate: -50% -50%; transform: scale(1.7) rotate(-14deg); opacity: 0;
-  animation: sealStamp .55s cubic-bezier(.34, 1.56, .64, 1) .85s forwards, sealHint 2.2s ease-in-out 1.6s infinite;
+  animation: sealStamp .55s cubic-bezier(.34, 1.56, .64, 1) .5s forwards, sealHint 2.2s ease-in-out 1.3s infinite;
 }
 .env-seal img { display: block; width: 100%; height: auto; filter: drop-shadow(0 .35rem .4rem rgba(0, 0, 0, .38)); transition: transform .3s ease; }
 .env-seal:hover img { transform: scale(1.05); }
@@ -115,14 +91,21 @@
 }
 
 .env-skip {
-  position: absolute; right: 1.5rem; bottom: 1.4rem; padding: .6rem .8rem; color: var(--cream, #fff1be);
-  font: 600 .72rem/1 var(--font-body, sans-serif); letter-spacing: .14em; text-transform: uppercase;
-  opacity: 0; animation: envFade .6s ease 1.2s forwards;
+  position: absolute; right: 1.5rem; bottom: 1.4rem; z-index: 10; padding: .6rem .8rem; color: var(--blue, #1a3daa);
+  font: 700 .72rem/1 var(--font-body, sans-serif); letter-spacing: .14em; text-transform: uppercase;
+  opacity: 0; animation: envFade .6s ease .9s forwards;
 }
 .env-skip:hover { text-decoration: underline; }
-@keyframes envFade { to { opacity: .75; } }
-.env-seal:focus-visible, .env-skip:focus-visible { outline: 2px dashed var(--cream, #fff1be); outline-offset: 4px; }
-/* Default desktop scale: 125% (same as browser-zoom 125%). Everything is sized in rem, so it scales together. */
+@keyframes envFade { to { opacity: .8; } }
+.env.open + .env-skip { animation: none; opacity: 0; pointer-events: none; }
+.env-seal:focus-visible, .env-skip:focus-visible { outline: 2px dashed var(--blue, #1a3daa); outline-offset: 4px; }
+
+/* the page waits inside the envelope, then rises into place as the paper slides away */
+html.env-on .site-header, html.env-on main { translate: 0 6vh; scale: .97; transform-origin: 50% 0; }
+html.env-open .site-header, html.env-open main {
+  translate: 0 0; scale: 1;
+  transition: translate 1.2s cubic-bezier(.65, 0, .35, 1) 1s, scale 1.2s cubic-bezier(.65, 0, .35, 1) 1s;
+}
 html { font-size: 100%; }
 @media (min-width: 1360px) { html { font-size: 125%; } }
 

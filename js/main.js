@@ -20,15 +20,27 @@
 
   /* Without IntersectionObserver there is nothing to trigger reveals — show everything. */
   if (!hasIO) doc.classList.remove('reveal-ready');
-  /* ---------------- Envelope intro (replaces the old preloader) ---------------- */
+   /* ---------------- Envelope intro (replaces the old preloader) ---------------- */
   safe('envelope-intro', function () {
     var PLAY_ONCE_PER_SESSION = false;   // true = only show on the first visit of a browser session
+    var SPEED = 1.7;                     // 1 = original speed, 2 = twice as fast (try 1.5 - 2.5)
     var intro = document.getElementById('envelopeIntro');
     if (!intro) { doc.classList.add('is-loaded'); return; }
     var env = document.getElementById('env');
     var seal = document.getElementById('envSeal');
     var skip = document.getElementById('envSkip');
     var opened = false, left = false;
+
+    // scales every intro animation/transition (and the page rise) without touching the CSS
+    function speedUp(els) {
+      void intro.offsetWidth;                        // flush styles so the animations exist
+      els.forEach(function (el) {
+        if (!el || !el.getAnimations) return;
+        el.getAnimations({ subtree: el === intro }).forEach(function (a) {
+          if (a.animationName !== 'envFailsafe') a.playbackRate = SPEED;
+        });
+      });
+    }
 
     function leave() {
       if (left) return;
@@ -44,8 +56,9 @@
       opened = true;
       doc.classList.add('env-open');                 // the page rises inside the envelope
       env.classList.add('open');                     // seal peels, flap lifts, paper slides away
-      setTimeout(function () { doc.classList.add('is-loaded'); }, 1000);   // hero entrance plays as the paper leaves
-      setTimeout(leave, 2500);
+      speedUp([intro, document.querySelector('main'), document.querySelector('.site-header')]);
+      setTimeout(function () { doc.classList.add('is-loaded'); }, 1000 / SPEED);   // hero entrance plays as the paper leaves
+      setTimeout(leave, 2500 / SPEED);
     }
 
     var seen = false;
@@ -54,10 +67,11 @@
 
     body.classList.add('lock');
     doc.classList.add('env-on');
+    speedUp([intro]);
     seal.addEventListener('click', open);
     skip.addEventListener('click', leave);
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') leave(); });
-    setTimeout(open, 1900);                           // opens by itself; click the seal to open sooner
+    setTimeout(open, 1900 / SPEED);                         // opens by itself; click the seal to open sooner
     setTimeout(leave, 6500);                          // safety net
   });
   /* ---------------- Marquees (single source of truth for the lists) ---------------- */
